@@ -26,8 +26,8 @@ namespace NoteSwag
             TextBox.ScrollBars = RichTextBoxScrollBars.Both;
             TextBox.SelectionChanged += this.UpdateSideBarInfo;
             TextBox.AcceptsTab = true;
-            TextBox.ForeColor = Color.FromName("White");
-            TextBox.BackColor = Color.FromArgb(50, 50, 50);
+            TextBox.ForeColor = Themes.DocumentTextColor;
+            TextBox.BackColor = Themes.DocumentColor;
             TabPage.Controls.Add(TextBox);
         }
         public Document(string path)
@@ -45,8 +45,8 @@ namespace NoteSwag
             TextBox.ScrollBars = RichTextBoxScrollBars.Both;
             TextBox.SelectionChanged += this.UpdateSideBarInfo;
             TextBox.AcceptsTab = true;
-            TextBox.ForeColor = Color.FromName("White");
-            TextBox.BackColor = Color.FromArgb(50, 50, 50);
+            TextBox.ForeColor = Themes.DocumentTextColor;
+            TextBox.BackColor = Themes.DocumentColor;
             TextBox.Text = File.ReadAllText(Directory);
             TabPage.Controls.Add(TextBox);
         }

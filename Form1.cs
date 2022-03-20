@@ -16,18 +16,21 @@ namespace NoteSwag
 {
     public partial class MainForm : Form
     {
-        public DocumentManager DocumentManager;
-        public static MainForm instance;
+        public DocumentManager DocumentManager { get; set; }
+        public static MainForm instance { get; set; }
 
-        public static SearchAndReplaceForm SearchAndReplaceForm = new SearchAndReplaceForm();
-        public static AboutBox AboutBox = new AboutBox();
+        public static SearchAndReplaceForm SearchAndReplaceForm { get; } = new SearchAndReplaceForm();
+        public static AboutBox AboutBox { get; } = new AboutBox();
+        public static SettingsForm SettingsForm { get; } = new SettingsForm();
         public MainForm()
         {
             instance = this;
             InitializeComponent();
             DocumentManager = DocumentManager.instance;
+            Themes.SetThemeColors(Settings.Theme);
+            ApplyThemeToForm();
             CheckForCommandLineArgumentFiles();
-            SetAssociation_User("txt", Application.ExecutablePath, Path.GetFileName(Application.ExecutablePath));
+            //SetAssociation_User("txt", Application.ExecutablePath, Path.GetFileName(Application.ExecutablePath));
         }
 
         #region WinAPI calls for custom border
@@ -50,12 +53,12 @@ namespace NoteSwag
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x84)
-            {  
+            {
                 Point pos = new Point(m.LParam.ToInt32());
                 pos = this.PointToClient(pos);
                 if (pos.X >= this.ClientSize.Width - 16 && pos.Y >= this.ClientSize.Height - 16)
                 {
-                    m.Result = (IntPtr)17; 
+                    m.Result = (IntPtr)17;
                     return;
                 }
             }
@@ -69,7 +72,8 @@ namespace NoteSwag
             {
                 panelTabControlDocuments.Size = new Size(Width - 135, Height - 65);
             }
-            else {
+            else
+            {
                 panelTabControlDocuments.Size = new Size(Width - 10, Height - 65);
             }
         }
@@ -164,12 +168,14 @@ namespace NoteSwag
             {
                 File.WriteAllText(DocumentManager.ActiveDocument.Directory, DocumentManager.ActiveDocument.TextBox.Text);
             }
-            else{
+            else
+            {
                 SaveAs();
             }
         }
 
-        private void SaveAs() {
+        private void SaveAs()
+        {
             if (tabControlDocuments.SelectedIndex == -1) { return; }
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
@@ -332,7 +338,8 @@ namespace NoteSwag
             wordWrapToolStripMenuItem.Image = Settings.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
             DocumentManager.ApplySettingsOnActiveDocument();
         }
-        public void ChangeLineAndCharacterNumber(int lineNumber, int charNumber) {
+        public void ChangeLineAndCharacterNumber(int lineNumber, int charNumber)
+        {
             labelLine.Text = lineNumber.ToString();
             labelChar.Text = charNumber.ToString();
         }
@@ -342,6 +349,67 @@ namespace NoteSwag
         {
             AboutBox.TopMost = true;
             AboutBox.Show();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm.TopMost = true;
+            SettingsForm.Show();
+        }
+
+        public void ApplyThemeToForm()
+        {
+            labelTitle.ForeColor = Themes.TopPanelTextColor;
+            panelControls.BackColor = Themes.TopPanelColor;
+            BackColor = Themes.BackColor;
+            toolBarStrip.BackColor = Themes.ToolStripMenuItemsColor;
+            foreach (Label item in panelInfoBar.Controls)
+            {
+                if (item.GetType() == typeof(Label))
+                {
+                    var label = (Label)item;
+                    label.ForeColor = Themes.InfoBarTextColor;
+                }
+            }
+            foreach (Document document in DocumentManager.Documents)
+            {
+                document.TextBox.ForeColor = Themes.DocumentTextColor;
+                document.TextBox.BackColor = Themes.DocumentColor;
+            }
+
+            List<ToolStripItem> allItems = new List<ToolStripItem>();
+            foreach (ToolStripItem toolItem in toolBarStrip.Items)
+            {
+                allItems.Add(toolItem);
+                allItems.AddRange(GetItems(toolItem));
+            }
+
+            foreach (ToolStripItem toolItem in allItems)
+            {
+                toolItem.ForeColor = Themes.ToolStripMenuItemsTextColor;
+                toolItem.BackColor = Themes.ToolStripMenuItemsColor;
+            }
+            IEnumerable<ToolStripItem> GetItems(ToolStripItem item)
+            {
+                foreach (ToolStripItem tsi in (item as ToolStripMenuItem).DropDownItems)
+                {
+                    if (tsi is ToolStripMenuItem)
+                    {
+                        if ((tsi as ToolStripMenuItem).HasDropDownItems)
+                        {
+                            foreach (ToolStripItem subItem in GetItems((tsi as ToolStripMenuItem)))
+                                yield return subItem;
+                        }
+                        yield return (tsi as ToolStripMenuItem);
+                    }
+                    else if (tsi is ToolStripSeparator)
+                    {
+                        yield return (tsi as ToolStripSeparator);
+                    }
+                }
+
+            }
+
         }
     }
 }

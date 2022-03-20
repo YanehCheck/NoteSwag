@@ -107,5 +107,19 @@ namespace NoteSwag
         {
             Hide();
         }
+
+        public void ApplyThemeToForm()
+        {
+            labelTitle.ForeColor = Themes.TopPanelTextColor;
+            panelControls.BackColor = Themes.TopPanelColor;
+            BackColor = Themes.BackColor;
+            foreach (var item in Controls)
+            {
+                if(item.GetType() == typeof(Label)) {
+                    var label = (Label) item;
+                    label.ForeColor = Themes.TextColor;
+                }
+            }
+        }
     }
 }
