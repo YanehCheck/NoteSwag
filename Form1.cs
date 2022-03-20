@@ -27,9 +27,10 @@ namespace NoteSwag
             instance = this;
             InitializeComponent();
             DocumentManager = DocumentManager.instance;
-            Themes.SetThemeColors(Settings.Theme);
+            SettingsSerializer.Deserialize();
             ApplyThemeToForm();
             CheckForCommandLineArgumentFiles();
+            DocumentManager.ApplySettingsOnActiveDocument();
             //SetAssociation_User("txt", Application.ExecutablePath, Path.GetFileName(Application.ExecutablePath));
         }
 
@@ -315,12 +316,14 @@ namespace NoteSwag
         {
             Settings.Font = new Font(Settings.Font.FontFamily, Settings.Font.Size + 1, Settings.Font.Style, Settings.Font.Unit, Settings.Font.GdiCharSet, Settings.Font.GdiVerticalFont);
             DocumentManager.ApplySettingsOnActiveDocument();
+            SettingsSerializer.Serialize();
         }
 
         private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Settings.Font = new Font(Settings.Font.FontFamily, Settings.Font.Size - 1, Settings.Font.Style, Settings.Font.Unit, Settings.Font.GdiCharSet, Settings.Font.GdiVerticalFont);
             DocumentManager.ApplySettingsOnActiveDocument();
+            SettingsSerializer.Serialize();
         }
         #endregion
 
@@ -330,6 +333,7 @@ namespace NoteSwag
             Settings.IsInfoBarVisible = !Settings.IsInfoBarVisible;
             infoBarToolStripMenuItem.Image = Settings.IsInfoBarVisible ? Properties.Resources.checkmark : null;
             DocumentManager.ApplySettingsOnActiveDocument();
+            SettingsSerializer.Serialize();
         }
 
         private void wordWrapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -337,6 +341,7 @@ namespace NoteSwag
             Settings.IsWordWrapEnabled = !Settings.IsWordWrapEnabled;
             wordWrapToolStripMenuItem.Image = Settings.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
             DocumentManager.ApplySettingsOnActiveDocument();
+            SettingsSerializer.Serialize();
         }
         public void ChangeLineAndCharacterNumber(int lineNumber, int charNumber)
         {

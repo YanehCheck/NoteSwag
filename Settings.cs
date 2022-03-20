@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace NoteSwag
 {
-    [Serializable]
     class Settings
     {
         public static Font Font { get; set; } = new Font(FontFamily.GenericSansSerif, 10);

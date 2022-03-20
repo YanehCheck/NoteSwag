@@ -47,6 +47,7 @@ namespace NoteSwag
             MainForm.instance.ApplyThemeToForm();
             MainForm.AboutBox.ApplyThemeToForm();
             MainForm.SettingsForm.ApplyThemeToForm();
+            SettingsSerializer.Serialize();
         }
 
         public void ApplyThemeToForm()

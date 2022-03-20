@@ -704,7 +704,6 @@ namespace NoteSwag
         private System.Windows.Forms.Label labelFileTypeText;
         public System.Windows.Forms.Label labelEncoding;
         private System.Windows.Forms.Label labelEncodingText;
-        private System.Windows.Forms.ToolStripMenuItem infoBarToolStripMenuItem;
         public System.Windows.Forms.Panel panelInfoBar;
         public System.Windows.Forms.Panel panelTabControlDocuments;
         public System.Windows.Forms.ToolStripMenuItem wordWrapToolStripMenuItem;
@@ -712,6 +711,7 @@ namespace NoteSwag
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem infoBarToolStripMenuItem;
     }
 }
 
