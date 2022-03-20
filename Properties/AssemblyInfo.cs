@@ -1,14 +1,15 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Notepad--")]
+[assembly: AssemblyTitle("NoteSwag")]
 [assembly: AssemblyDescription("NoteSwag is a redesign and a lightweight alternative to Notepad. It contains all the features of Notepad and much more. Thank you for choosing NoteSwag!")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Made by Michael Janeček")]
+[assembly: AssemblyCompany("Michael Janeček")]
 [assembly: AssemblyProduct("NoteSwag")]
 [assembly: AssemblyCopyright("Copyright NoteSwag© 2022")]
 [assembly: AssemblyTrademark("")]
@@ -34,3 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("en")]

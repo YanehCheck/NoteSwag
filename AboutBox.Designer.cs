@@ -1,5 +1,5 @@
 ﻿
-namespace Notepad__
+namespace NoteSwag
 {
     partial class AboutBox
     {
@@ -136,7 +136,7 @@ namespace Notepad__
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Notepad__.Properties.Resources.icon24;
+            this.pictureBox1.Image = global::NoteSwag.Properties.Resources.icon24;
             this.pictureBox1.Location = new System.Drawing.Point(12, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Notepad__.Properties {
+namespace NoteSwag.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

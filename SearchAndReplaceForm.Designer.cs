@@ -1,5 +1,5 @@
 ﻿
-namespace Notepad__
+namespace NoteSwag
 {
     partial class SearchAndReplaceForm
     {

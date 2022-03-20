@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Notepad__
+namespace NoteSwag
 {
     public partial class AboutBox : Form
     {
@@ -20,7 +20,7 @@ namespace Notepad__
             labelProductName.Text = AssemblyProduct;
             labelProductDescription.Text = AssemblyDescription;
             labelCopyright.Text = AssemblyCopyright;
-            labelAuthor.Text = AssemblyCompany;
+            labelAuthor.Text = "Made by " + AssemblyCompany;
         }
 
         #region WinAPI calls for custom border
