@@ -13,5 +13,7 @@ namespace NoteSwag
         public static bool IsInfoBarVisible { get; set; } = true;
         public static bool IsWordWrapEnabled { get; set; } = false;
         public static Themes.Theme Theme { get; set; } = Themes.Theme.Dark;
+
+        public static bool IsBracketMatchingEnabled = false;
     }
 }

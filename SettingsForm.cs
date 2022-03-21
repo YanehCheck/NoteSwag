@@ -69,5 +69,11 @@ namespace NoteSwag
         {
             comboBoxTheme.Text = Enum.GetName(typeof(Themes.Theme), Settings.Theme);
         }
+
+        private void checkBoxBracketMatching_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.IsBracketMatchingEnabled = checkBoxBracketMatching.Checked;
+            SettingsSerializer.Serialize();
+        }
     }
 }

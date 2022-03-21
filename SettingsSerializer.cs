@@ -15,6 +15,7 @@ namespace NoteSwag
             Properties.Settings.Default.IsInfoBarVisible = Settings.IsInfoBarVisible;
             Properties.Settings.Default.IsWordWrapEnabled = Settings.IsWordWrapEnabled;
             Properties.Settings.Default.Theme = (int) Settings.Theme;
+            Properties.Settings.Default.IsBracketMatchingEnabled = Settings.IsBracketMatchingEnabled;
 
             Properties.Settings.Default.Save();
         }
@@ -24,10 +25,12 @@ namespace NoteSwag
             Settings.IsInfoBarVisible = Properties.Settings.Default.IsInfoBarVisible;
             Settings.IsWordWrapEnabled = Properties.Settings.Default.IsWordWrapEnabled;
             Settings.Theme = (Themes.Theme) Properties.Settings.Default.Theme;
+            Settings.IsBracketMatchingEnabled = Properties.Settings.Default.IsBracketMatchingEnabled;
             Themes.SetThemeColors(Settings.Theme);
 
             MainForm.instance.infoBarToolStripMenuItem.Image = Settings.IsInfoBarVisible ? Properties.Resources.checkmark : null;
             MainForm.instance.wordWrapToolStripMenuItem.Image = Settings.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
+            MainForm.SettingsForm.checkBoxBracketMatching.Checked = Settings.IsBracketMatchingEnabled;
         }
     }
 }

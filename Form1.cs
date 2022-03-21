@@ -1,15 +1,13 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NoteSwag
@@ -415,6 +413,16 @@ namespace NoteSwag
 
             }
 
+        }
+
+        private void searchWithGoogleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DocumentManager.ActiveDocument.TextBox.SelectedText)) {
+                Process.Start($"http://google.com/search?q={DocumentManager.ActiveDocument.TextBox.SelectedText}");
+            }
+            else {
+                SystemSounds.Exclamation.Play();
+            }
         }
     }
 }

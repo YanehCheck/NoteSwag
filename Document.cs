@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NoteSwag
@@ -20,14 +15,7 @@ namespace NoteSwag
             MainForm.instance.tabControlDocuments.TabPages.Add(TabPage);
 
             TextBox = new RichTextBox();
-            TextBox.Dock = DockStyle.Fill;
-            TextBox.Multiline = true;
-            TextBox.WordWrap = false;
-            TextBox.ScrollBars = RichTextBoxScrollBars.Both;
-            TextBox.SelectionChanged += this.UpdateSideBarInfo;
-            TextBox.AcceptsTab = true;
-            TextBox.ForeColor = Themes.DocumentTextColor;
-            TextBox.BackColor = Themes.DocumentColor;
+            AddCommonTextboxProperties();
             TabPage.Controls.Add(TextBox);
         }
         public Document(string path)
@@ -39,16 +27,22 @@ namespace NoteSwag
             MainForm.instance.tabControlDocuments.TabPages.Add(TabPage);
 
             TextBox = new RichTextBox();
+            AddCommonTextboxProperties();
+            TextBox.Text = File.ReadAllText(Directory);
+            TabPage.Controls.Add(TextBox);
+        }
+
+        private void AddCommonTextboxProperties() {
             TextBox.Dock = DockStyle.Fill;
             TextBox.Multiline = true;
             TextBox.WordWrap = false;
             TextBox.ScrollBars = RichTextBoxScrollBars.Both;
             TextBox.SelectionChanged += this.UpdateSideBarInfo;
+            TextBox.MouseDown += this.OpenContextMenu;
+            TextBox.KeyPress += this.BracketMatching;
             TextBox.AcceptsTab = true;
             TextBox.ForeColor = Themes.DocumentTextColor;
             TextBox.BackColor = Themes.DocumentColor;
-            TextBox.Text = File.ReadAllText(Directory);
-            TabPage.Controls.Add(TextBox);
         }
 
         public void UpdateSideBarInfo(object sender, EventArgs e) {
@@ -56,6 +50,48 @@ namespace NoteSwag
             int charNumber = TextBox.SelectionStart - (TextBox.GetFirstCharIndexFromLine(1 + TextBox.GetLineFromCharIndex(TextBox.SelectionStart) - 1));
             MainForm.instance.DocumentManager.SetActiveDocumentFileInfo();
             MainForm.instance.ChangeLineAndCharacterNumber(lineNumber, charNumber);
+        }
+
+        public void OpenContextMenu(object sender, MouseEventArgs e) {
+            if(e.Button == MouseButtons.Right) {
+                MainForm.instance.contextMenuStrip.Show(this.TextBox, e.X, e.Y);
+            }
+        }
+        public void BracketMatching(object sender, KeyPressEventArgs e) {
+            char bracket;
+            if (Settings.IsBracketMatchingEnabled) {
+                switch (e.KeyChar) {
+                    case '(':
+                        bracket = ')';
+                        break;
+                    case '{':
+                        bracket = '}';
+                        break;
+                    case '<':
+                        bracket = '>';
+                        break;
+                    case '"':
+                        bracket = '"';
+                        break;
+                    case '\'':
+                        bracket = '\'';
+                        break;
+                    case '‚':
+                        bracket = '‘';
+                        break;
+                    case '„':
+                        bracket = '“';
+                        break;
+                    case '»':
+                        bracket = '«';
+                        break;
+                    default:
+                        return;
+                }
+                TextBox.SelectedText = e.KeyChar.ToString() + bracket;
+                TextBox.Select(TextBox.SelectionStart - 1, 0);
+                e.Handled = true;
+            }
         }
     }
 }

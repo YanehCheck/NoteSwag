@@ -29,6 +29,7 @@ namespace NoteSwag
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelControls = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
@@ -77,12 +78,15 @@ namespace NoteSwag
             this.labelLine = new System.Windows.Forms.Label();
             this.labelLineText = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.searchWithGoogleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelControls.SuspendLayout();
             this.toolBarStrip.SuspendLayout();
             this.panelToolbar.SuspendLayout();
             this.panelTabControlDocuments.SuspendLayout();
             this.panelInfoBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControls
@@ -94,9 +98,9 @@ namespace NoteSwag
             this.panelControls.Controls.Add(this.buttonClose);
             this.panelControls.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControls.Location = new System.Drawing.Point(0, 0);
-            this.panelControls.Margin = new System.Windows.Forms.Padding(2);
+            this.panelControls.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControls.Name = "panelControls";
-            this.panelControls.Size = new System.Drawing.Size(600, 30);
+            this.panelControls.Size = new System.Drawing.Size(800, 37);
             this.panelControls.TabIndex = 0;
             this.panelControls.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MakeControlDraggableEvent);
             // 
@@ -104,10 +108,9 @@ namespace NoteSwag
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(32, 9);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTitle.Location = new System.Drawing.Point(43, 11);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(64, 15);
+            this.labelTitle.Size = new System.Drawing.Size(72, 17);
             this.labelTitle.TabIndex = 3;
             this.labelTitle.Text = "NoteSwag";
             this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MakeControlDraggableEvent);
@@ -115,10 +118,10 @@ namespace NoteSwag
             // buttonMinimize
             // 
             this.buttonMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMinimize.Location = new System.Drawing.Point(525, 6);
+            this.buttonMinimize.Location = new System.Drawing.Point(700, 7);
             this.buttonMinimize.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMinimize.Name = "buttonMinimize";
-            this.buttonMinimize.Size = new System.Drawing.Size(19, 20);
+            this.buttonMinimize.Size = new System.Drawing.Size(25, 25);
             this.buttonMinimize.TabIndex = 2;
             this.buttonMinimize.Text = "🗕";
             this.buttonMinimize.UseVisualStyleBackColor = true;
@@ -127,10 +130,10 @@ namespace NoteSwag
             // buttonMaximize
             // 
             this.buttonMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMaximize.Location = new System.Drawing.Point(548, 6);
+            this.buttonMaximize.Location = new System.Drawing.Point(731, 7);
             this.buttonMaximize.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMaximize.Name = "buttonMaximize";
-            this.buttonMaximize.Size = new System.Drawing.Size(19, 20);
+            this.buttonMaximize.Size = new System.Drawing.Size(25, 25);
             this.buttonMaximize.TabIndex = 1;
             this.buttonMaximize.Text = "🗖";
             this.buttonMaximize.UseVisualStyleBackColor = true;
@@ -139,10 +142,10 @@ namespace NoteSwag
             // buttonClose
             // 
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.Location = new System.Drawing.Point(570, 6);
+            this.buttonClose.Location = new System.Drawing.Point(760, 7);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(0);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(19, 20);
+            this.buttonClose.Size = new System.Drawing.Size(25, 25);
             this.buttonClose.TabIndex = 0;
             this.buttonClose.Text = "X";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -161,7 +164,7 @@ namespace NoteSwag
             this.toolBarStrip.Location = new System.Drawing.Point(0, 0);
             this.toolBarStrip.Name = "toolBarStrip";
             this.toolBarStrip.Padding = new System.Windows.Forms.Padding(0);
-            this.toolBarStrip.Size = new System.Drawing.Size(600, 24);
+            this.toolBarStrip.Size = new System.Drawing.Size(800, 24);
             this.toolBarStrip.TabIndex = 0;
             this.toolBarStrip.Text = "menuStrip";
             // 
@@ -189,7 +192,7 @@ namespace NoteSwag
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -201,7 +204,7 @@ namespace NoteSwag
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -210,7 +213,7 @@ namespace NoteSwag
             this.closeDocumentToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.closeDocumentToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.closeDocumentToolStripMenuItem.Name = "closeDocumentToolStripMenuItem";
-            this.closeDocumentToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeDocumentToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.closeDocumentToolStripMenuItem.Text = "Close Document";
             this.closeDocumentToolStripMenuItem.Click += new System.EventHandler(this.closeDocumentToolStripMenuItem_Click);
             // 
@@ -222,7 +225,7 @@ namespace NoteSwag
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -231,7 +234,7 @@ namespace NoteSwag
             this.saveAsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.saveAsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -243,7 +246,7 @@ namespace NoteSwag
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.printToolStripMenuItem.Text = "&Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
@@ -252,7 +255,7 @@ namespace NoteSwag
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -378,7 +381,7 @@ namespace NoteSwag
             this.zoomOutToolStripMenuItem});
             this.zoomToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
@@ -404,7 +407,7 @@ namespace NoteSwag
             this.infoBarToolStripMenuItem.Image = global::NoteSwag.Properties.Resources.checkmark;
             this.infoBarToolStripMenuItem.Name = "infoBarToolStripMenuItem";
             this.infoBarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.infoBarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.infoBarToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.infoBarToolStripMenuItem.Text = "Info Bar";
             this.infoBarToolStripMenuItem.Click += new System.EventHandler(this.infoBarToolStripMenuItem_Click);
             // 
@@ -413,7 +416,7 @@ namespace NoteSwag
             this.wordWrapToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.wordWrapToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
-            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.wordWrapToolStripMenuItem.Text = "Word Wrap";
             this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.wordWrapToolStripMenuItem_Click);
             // 
@@ -437,19 +440,19 @@ namespace NoteSwag
             // 
             this.panelToolbar.Controls.Add(this.toolBarStrip);
             this.panelToolbar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelToolbar.Location = new System.Drawing.Point(0, 30);
-            this.panelToolbar.Margin = new System.Windows.Forms.Padding(2);
+            this.panelToolbar.Location = new System.Drawing.Point(0, 37);
+            this.panelToolbar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelToolbar.Name = "panelToolbar";
-            this.panelToolbar.Size = new System.Drawing.Size(600, 24);
+            this.panelToolbar.Size = new System.Drawing.Size(800, 30);
             this.panelToolbar.TabIndex = 1;
             // 
             // panelTabControlDocuments
             // 
             this.panelTabControlDocuments.Controls.Add(this.tabControlDocuments);
-            this.panelTabControlDocuments.Location = new System.Drawing.Point(128, 57);
+            this.panelTabControlDocuments.Location = new System.Drawing.Point(171, 70);
             this.panelTabControlDocuments.Margin = new System.Windows.Forms.Padding(0);
             this.panelTabControlDocuments.Name = "panelTabControlDocuments";
-            this.panelTabControlDocuments.Size = new System.Drawing.Size(465, 427);
+            this.panelTabControlDocuments.Size = new System.Drawing.Size(620, 526);
             this.panelTabControlDocuments.TabIndex = 2;
             // 
             // tabControlDocuments
@@ -458,10 +461,10 @@ namespace NoteSwag
             this.tabControlDocuments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlDocuments.HotTrack = true;
             this.tabControlDocuments.Location = new System.Drawing.Point(0, 0);
-            this.tabControlDocuments.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControlDocuments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlDocuments.Name = "tabControlDocuments";
             this.tabControlDocuments.SelectedIndex = 0;
-            this.tabControlDocuments.Size = new System.Drawing.Size(465, 427);
+            this.tabControlDocuments.Size = new System.Drawing.Size(620, 526);
             this.tabControlDocuments.TabIndex = 0;
             this.tabControlDocuments.SelectedIndexChanged += new System.EventHandler(this.tabControlDocuments_SelectedIndexChanged);
             // 
@@ -479,10 +482,10 @@ namespace NoteSwag
             this.panelInfoBar.Controls.Add(this.labelCharText);
             this.panelInfoBar.Controls.Add(this.labelLine);
             this.panelInfoBar.Controls.Add(this.labelLineText);
-            this.panelInfoBar.Location = new System.Drawing.Point(0, 57);
-            this.panelInfoBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 8);
+            this.panelInfoBar.Location = new System.Drawing.Point(0, 70);
+            this.panelInfoBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 10);
             this.panelInfoBar.Name = "panelInfoBar";
-            this.panelInfoBar.Size = new System.Drawing.Size(125, 423);
+            this.panelInfoBar.Size = new System.Drawing.Size(165, 520);
             this.panelInfoBar.TabIndex = 3;
             // 
             // labelEncoding
@@ -490,8 +493,7 @@ namespace NoteSwag
             this.labelEncoding.AutoSize = true;
             this.labelEncoding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEncoding.ForeColor = System.Drawing.Color.White;
-            this.labelEncoding.Location = new System.Drawing.Point(30, 66);
-            this.labelEncoding.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEncoding.Location = new System.Drawing.Point(40, 81);
             this.labelEncoding.Name = "labelEncoding";
             this.labelEncoding.Size = new System.Drawing.Size(13, 18);
             this.labelEncoding.TabIndex = 10;
@@ -502,8 +504,7 @@ namespace NoteSwag
             this.labelEncodingText.AutoSize = true;
             this.labelEncodingText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEncodingText.ForeColor = System.Drawing.Color.White;
-            this.labelEncodingText.Location = new System.Drawing.Point(-1, 66);
-            this.labelEncodingText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEncodingText.Location = new System.Drawing.Point(-1, 81);
             this.labelEncodingText.Name = "labelEncodingText";
             this.labelEncodingText.Size = new System.Drawing.Size(42, 18);
             this.labelEncodingText.TabIndex = 9;
@@ -514,8 +515,7 @@ namespace NoteSwag
             this.labelFileType.AutoSize = true;
             this.labelFileType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFileType.ForeColor = System.Drawing.Color.White;
-            this.labelFileType.Location = new System.Drawing.Point(59, 51);
-            this.labelFileType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFileType.Location = new System.Drawing.Point(79, 63);
             this.labelFileType.Name = "labelFileType";
             this.labelFileType.Size = new System.Drawing.Size(13, 18);
             this.labelFileType.TabIndex = 8;
@@ -526,8 +526,7 @@ namespace NoteSwag
             this.labelFileTypeText.AutoSize = true;
             this.labelFileTypeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFileTypeText.ForeColor = System.Drawing.Color.White;
-            this.labelFileTypeText.Location = new System.Drawing.Point(-1, 51);
-            this.labelFileTypeText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFileTypeText.Location = new System.Drawing.Point(-1, 63);
             this.labelFileTypeText.Name = "labelFileTypeText";
             this.labelFileTypeText.Size = new System.Drawing.Size(76, 18);
             this.labelFileTypeText.TabIndex = 7;
@@ -538,8 +537,7 @@ namespace NoteSwag
             this.labelFileSize.AutoSize = true;
             this.labelFileSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFileSize.ForeColor = System.Drawing.Color.White;
-            this.labelFileSize.Location = new System.Drawing.Point(58, 37);
-            this.labelFileSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFileSize.Location = new System.Drawing.Point(77, 46);
             this.labelFileSize.Name = "labelFileSize";
             this.labelFileSize.Size = new System.Drawing.Size(13, 18);
             this.labelFileSize.TabIndex = 6;
@@ -550,8 +548,7 @@ namespace NoteSwag
             this.labelFileSizeText.AutoSize = true;
             this.labelFileSizeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFileSizeText.ForeColor = System.Drawing.Color.White;
-            this.labelFileSizeText.Location = new System.Drawing.Point(-2, 37);
-            this.labelFileSizeText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFileSizeText.Location = new System.Drawing.Point(-1, 46);
             this.labelFileSizeText.Name = "labelFileSizeText";
             this.labelFileSizeText.Size = new System.Drawing.Size(76, 18);
             this.labelFileSizeText.TabIndex = 5;
@@ -560,10 +557,9 @@ namespace NoteSwag
             // labelSeparator
             // 
             this.labelSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelSeparator.Location = new System.Drawing.Point(0, 32);
-            this.labelSeparator.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSeparator.Location = new System.Drawing.Point(0, 39);
             this.labelSeparator.Name = "labelSeparator";
-            this.labelSeparator.Size = new System.Drawing.Size(128, 2);
+            this.labelSeparator.Size = new System.Drawing.Size(171, 2);
             this.labelSeparator.TabIndex = 4;
             // 
             // labelChar
@@ -571,8 +567,7 @@ namespace NoteSwag
             this.labelChar.AutoSize = true;
             this.labelChar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChar.ForeColor = System.Drawing.Color.White;
-            this.labelChar.Location = new System.Drawing.Point(37, 14);
-            this.labelChar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelChar.Location = new System.Drawing.Point(49, 17);
             this.labelChar.Name = "labelChar";
             this.labelChar.Size = new System.Drawing.Size(13, 18);
             this.labelChar.TabIndex = 3;
@@ -583,8 +578,7 @@ namespace NoteSwag
             this.labelCharText.AutoSize = true;
             this.labelCharText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCharText.ForeColor = System.Drawing.Color.White;
-            this.labelCharText.Location = new System.Drawing.Point(-2, 14);
-            this.labelCharText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCharText.Location = new System.Drawing.Point(-1, 17);
             this.labelCharText.Name = "labelCharText";
             this.labelCharText.Size = new System.Drawing.Size(39, 18);
             this.labelCharText.TabIndex = 2;
@@ -595,8 +589,7 @@ namespace NoteSwag
             this.labelLine.AutoSize = true;
             this.labelLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLine.ForeColor = System.Drawing.Color.White;
-            this.labelLine.Location = new System.Drawing.Point(37, -1);
-            this.labelLine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelLine.Location = new System.Drawing.Point(49, -1);
             this.labelLine.Name = "labelLine";
             this.labelLine.Size = new System.Drawing.Size(13, 18);
             this.labelLine.TabIndex = 1;
@@ -607,8 +600,7 @@ namespace NoteSwag
             this.labelLineText.AutoSize = true;
             this.labelLineText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLineText.ForeColor = System.Drawing.Color.White;
-            this.labelLineText.Location = new System.Drawing.Point(-1, -1);
-            this.labelLineText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelLineText.Location = new System.Drawing.Point(-1, 0);
             this.labelLineText.Name = "labelLineText";
             this.labelLineText.Size = new System.Drawing.Size(31, 18);
             this.labelLineText.TabIndex = 0;
@@ -617,21 +609,36 @@ namespace NoteSwag
             // pictureBox1
             // 
             this.pictureBox1.Image = global::NoteSwag.Properties.Resources.icon24;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 20);
+            this.pictureBox1.Size = new System.Drawing.Size(24, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MakeControlDraggableEvent);
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchWithGoogleToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(211, 56);
+            // 
+            // searchWithGoogleToolStripMenuItem
+            // 
+            this.searchWithGoogleToolStripMenuItem.Name = "searchWithGoogleToolStripMenuItem";
+            this.searchWithGoogleToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.searchWithGoogleToolStripMenuItem.Text = "Search with Google";
+            this.searchWithGoogleToolStripMenuItem.Click += new System.EventHandler(this.searchWithGoogleToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(600, 488);
+            this.ClientSize = new System.Drawing.Size(800, 601);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelTabControlDocuments);
@@ -640,10 +647,10 @@ namespace NoteSwag
             this.Controls.Add(this.panelInfoBar);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(600, 488);
+            this.MinimumSize = new System.Drawing.Size(800, 601);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.TopMost = true;
@@ -659,6 +666,7 @@ namespace NoteSwag
             this.panelInfoBar.ResumeLayout(false);
             this.panelInfoBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -712,6 +720,8 @@ namespace NoteSwag
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem infoBarToolStripMenuItem;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem searchWithGoogleToolStripMenuItem;
     }
 }
 

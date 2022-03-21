@@ -11,6 +11,7 @@ namespace NoteSwag
         public enum Theme
         {
             Dark,
+            DarkPlus,
             Classic,
             Midnight
         }
@@ -33,6 +34,17 @@ namespace NoteSwag
                     ToolStripMenuItemsTextColor = Color.FromName("White");
                     InfoBarTextColor = Color.FromName("White");
                     DocumentColor = Color.FromArgb(64, 64, 64);
+                    DocumentTextColor = Color.FromName("White");
+                    TextColor = Color.FromName("White");
+                    break;
+                case Theme.DarkPlus:
+                    TopPanelColor = Color.FromName("Black");
+                    TopPanelTextColor = Color.FromName("White");
+                    BackColor = Color.FromArgb(32, 32, 32);
+                    ToolStripMenuItemsColor = Color.FromArgb(32, 32, 32);
+                    ToolStripMenuItemsTextColor = Color.FromName("White");
+                    InfoBarTextColor = Color.FromName("White");
+                    DocumentColor = Color.FromArgb(32, 32, 32);
                     DocumentTextColor = Color.FromName("White");
                     TextColor = Color.FromName("White");
                     break;
