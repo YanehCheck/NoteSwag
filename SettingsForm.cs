@@ -13,9 +13,11 @@ namespace NoteSwag
 {
     public partial class SettingsForm : Form
     {
+        private FontConverter fontConvertor { get; set; } = new FontConverter();
         public SettingsForm()
         {
             InitializeComponent();
+            AddFontsToComboBox();
         }
 
         #region WinAPI calls for custom border
@@ -74,6 +76,24 @@ namespace NoteSwag
         {
             Settings.IsBracketMatchingEnabled = checkBoxBracketMatching.Checked;
             SettingsSerializer.Serialize();
+        }
+
+        private void AddFontsToComboBox() {
+            foreach (var font in FontFamily.Families) {
+                comboBoxFont.Items.Add(font.Name);
+            }
+        }
+
+        private void comboBoxFont_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.Font = new Font(((Font) fontConvertor.ConvertFromString(comboBoxFont.Text)).FontFamily, Settings.Font.Size, Settings.Font.Style, Settings.Font.Unit, Settings.Font.GdiCharSet, Settings.Font.GdiVerticalFont);
+            MainForm.instance.DocumentManager.ApplySettingsOnActiveDocument();
+            SettingsSerializer.Serialize();
+        }
+
+        private void SettingsForm_Activated(object sender, EventArgs e)
+        {
+            comboBoxFont.Text = Settings.Font.FontFamily.Name;
         }
     }
 }
