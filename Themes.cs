@@ -13,7 +13,8 @@ namespace NoteSwag
             Dark,
             DarkPlus,
             Classic,
-            Midnight
+            Midnight,
+            Classy
         }
         public static Color TopPanelColor { get; set; }
         public static Color TopPanelTextColor { get; set; }
@@ -60,15 +61,26 @@ namespace NoteSwag
                     TextColor = Color.FromName("Black");
                     break;
                 case Theme.Midnight:
-                    TopPanelColor = Color.FromArgb(60, 20, 200);
+                    TopPanelColor = Color.FromArgb(0, 0, 20);
                     TopPanelTextColor = Color.FromName("White");
-                    BackColor = Color.FromArgb(60, 20, 200);
-                    ToolStripMenuItemsColor = Color.FromArgb(60, 20, 190);
+                    BackColor = Color.FromArgb(0, 0, 50);
+                    ToolStripMenuItemsColor = Color.FromArgb(0, 0, 50);
                     ToolStripMenuItemsTextColor = Color.FromName("White");
                     InfoBarTextColor = Color.FromName("White");
-                    DocumentColor = Color.FromArgb(60, 20, 200);
+                    DocumentColor = Color.FromArgb(0, 0, 50);
                     DocumentTextColor = Color.FromName("White");
                     TextColor = Color.FromName("White");
+                    break;
+                case Theme.Classy:
+                    TopPanelColor = Color.FromArgb(102, 0, 0);
+                    TopPanelTextColor = Color.FromName("Black");
+                    BackColor = Color.FromArgb(179, 0, 0);
+                    ToolStripMenuItemsColor = Color.FromArgb(179, 0, 0);
+                    ToolStripMenuItemsTextColor = Color.FromName("Black");
+                    InfoBarTextColor = Color.FromName("Black");
+                    DocumentColor = Color.FromArgb(179, 0, 0);
+                    DocumentTextColor = Color.FromName("Black");
+                    TextColor = Color.FromName("Black");
                     break;
             }
         }

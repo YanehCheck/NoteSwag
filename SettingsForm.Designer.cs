@@ -110,7 +110,8 @@ namespace NoteSwag
             "Dark",
             "DarkPlus",
             "Classic",
-            "Midnight"});
+            "Midnight",
+            "Classy"});
             this.comboBoxTheme.Location = new System.Drawing.Point(79, 50);
             this.comboBoxTheme.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTheme.Name = "comboBoxTheme";

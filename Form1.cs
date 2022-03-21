@@ -27,6 +27,7 @@ namespace NoteSwag
             DocumentManager = DocumentManager.instance;
             SettingsSerializer.Deserialize();
             ApplyThemeToForm();
+            AboutBox.ApplyThemeToForm();
             CheckForCommandLineArgumentFiles();
             DocumentManager.ApplySettingsOnActiveDocument();
             //SetAssociation_User("txt", Application.ExecutablePath, Path.GetFileName(Application.ExecutablePath));
