@@ -59,7 +59,7 @@ namespace NoteSwag
         }
         public void BracketMatching(object sender, KeyPressEventArgs e) {
             char bracket;
-            if (Settings.IsBracketMatchingEnabled) {
+            if (Properties.Settings.Default.IsBracketMatchingEnabled) {
                 switch (e.KeyChar) {
                     case '(':
                         bracket = ')';

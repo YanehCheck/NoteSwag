@@ -44,12 +44,12 @@ namespace NoteSwag
 
         private void comboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.Theme = (Themes.Theme) Enum.Parse(typeof(Themes.Theme), comboBoxTheme.Text);
-            Themes.SetThemeColors(Settings.Theme);
+            Properties.Settings.Default.Theme = (int) Enum.Parse(typeof(Themes.Theme), comboBoxTheme.Text);
+            Themes.SetThemeColors((Themes.Theme) Properties.Settings.Default.Theme);
             MainForm.instance.ApplyThemeToForm();
             MainForm.AboutBox.ApplyThemeToForm();
             MainForm.SettingsForm.ApplyThemeToForm();
-            SettingsSerializer.Serialize();
+            Properties.Settings.Default.Save();
         }
 
         public void ApplyThemeToForm()
@@ -69,13 +69,13 @@ namespace NoteSwag
 
         private void SettingsForm_Shown(object sender, EventArgs e)
         {
-            comboBoxTheme.Text = Enum.GetName(typeof(Themes.Theme), Settings.Theme);
+            comboBoxTheme.Text = Enum.GetName(typeof(Themes.Theme), (Themes.Theme) Properties.Settings.Default.Theme);
         }
 
         private void checkBoxBracketMatching_CheckedChanged(object sender, EventArgs e)
         {
-            Settings.IsBracketMatchingEnabled = checkBoxBracketMatching.Checked;
-            SettingsSerializer.Serialize();
+            Properties.Settings.Default.IsBracketMatchingEnabled = checkBoxBracketMatching.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void AddFontsToComboBox() {
@@ -86,14 +86,14 @@ namespace NoteSwag
 
         private void comboBoxFont_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.Font = new Font(((Font) fontConvertor.ConvertFromString(comboBoxFont.Text)).FontFamily, Settings.Font.Size, Settings.Font.Style, Settings.Font.Unit, Settings.Font.GdiCharSet, Settings.Font.GdiVerticalFont);
+            Properties.Settings.Default.Font = new Font(((Font) fontConvertor.ConvertFromString(comboBoxFont.Text)).FontFamily, Properties.Settings.Default.Font.Size, Properties.Settings.Default.Font.Style, Properties.Settings.Default.Font.Unit, Properties.Settings.Default.Font.GdiCharSet, Properties.Settings.Default.Font.GdiVerticalFont);
             MainForm.instance.DocumentManager.ApplySettingsOnActiveDocument();
-            SettingsSerializer.Serialize();
+            Properties.Settings.Default.Save();
         }
 
         private void SettingsForm_Activated(object sender, EventArgs e)
         {
-            comboBoxFont.Text = Settings.Font.FontFamily.Name;
+            comboBoxFont.Text = Properties.Settings.Default.Font.FontFamily.Name;
         }
     }
 }

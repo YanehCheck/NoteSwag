@@ -54,10 +54,10 @@ namespace NoteSwag
         }
 
         public void ApplySettingsOnActiveDocument() {
-            ActiveDocument.TextBox.Font = Settings.Font;
-            ActiveDocument.TextBox.WordWrap = Settings.IsWordWrapEnabled;
-            MainForm.instance.panelInfoBar.Visible = Settings.IsInfoBarVisible;
-            MainForm.instance.panelTabControlDocuments.Location = Settings.IsInfoBarVisible ? new Point(130, 57) : new Point(5, 57);
+            ActiveDocument.TextBox.Font = Properties.Settings.Default.Font;
+            ActiveDocument.TextBox.WordWrap = Properties.Settings.Default.IsWordWrapEnabled;
+            MainForm.instance.panelInfoBar.Visible = Properties.Settings.Default.IsInfoBarVisible;
+            MainForm.instance.panelTabControlDocuments.Location = Properties.Settings.Default.IsInfoBarVisible ? new Point(130, 57) : new Point(5, 57);
             MainForm.instance.MainForm_SizeChanged(this, EventArgs.Empty);
         }
 

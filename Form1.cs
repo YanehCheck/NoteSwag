@@ -25,12 +25,20 @@ namespace NoteSwag
             instance = this;
             InitializeComponent();
             DocumentManager = DocumentManager.instance;
-            SettingsSerializer.Deserialize();
-            ApplyThemeToForm();
-            AboutBox.ApplyThemeToForm();
+            SetupSettings();
             CheckForCommandLineArgumentFiles();
             DocumentManager.ApplySettingsOnActiveDocument();
             //SetAssociation_User("txt", Application.ExecutablePath, Path.GetFileName(Application.ExecutablePath));
+        }
+
+        private void SetupSettings()
+        {
+            Themes.SetThemeColors((Themes.Theme)Properties.Settings.Default.Theme);
+            infoBarToolStripMenuItem.Image = Properties.Settings.Default.IsInfoBarVisible ? Properties.Resources.checkmark : null;
+            wordWrapToolStripMenuItem.Image = Properties.Settings.Default.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
+            SettingsForm.checkBoxBracketMatching.Checked = Properties.Settings.Default.IsBracketMatchingEnabled;
+            ApplyThemeToForm();
+            AboutBox.ApplyThemeToForm();
         }
 
         #region WinAPI calls for custom border
@@ -68,7 +76,7 @@ namespace NoteSwag
         // Dock fillu u panelu s otevřenými dokumenty se to co dělám nelíbí, takže musím takhle
         public void MainForm_SizeChanged(object sender, EventArgs e)
         {
-            if (Settings.IsInfoBarVisible)
+            if (Properties.Settings.Default.IsInfoBarVisible)
             {
                 panelTabControlDocuments.Size = new Size(Width - 135, Height - 65);
             }
@@ -313,34 +321,34 @@ namespace NoteSwag
         #region View
         private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings.Font = new Font(Settings.Font.FontFamily, Settings.Font.Size + 1, Settings.Font.Style, Settings.Font.Unit, Settings.Font.GdiCharSet, Settings.Font.GdiVerticalFont);
+            Properties.Settings.Default.Font = new Font(Properties.Settings.Default.Font.FontFamily, Properties.Settings.Default.Font.Size + 1, Properties.Settings.Default.Font.Style, Properties.Settings.Default.Font.Unit, Properties.Settings.Default.Font.GdiCharSet, Properties.Settings.Default.Font.GdiVerticalFont);
             DocumentManager.ApplySettingsOnActiveDocument();
-            SettingsSerializer.Serialize();
+            Properties.Settings.Default.Save();
         }
 
         private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings.Font = new Font(Settings.Font.FontFamily, Settings.Font.Size - 1, Settings.Font.Style, Settings.Font.Unit, Settings.Font.GdiCharSet, Settings.Font.GdiVerticalFont);
+            Properties.Settings.Default.Font = new Font(Properties.Settings.Default.Font.FontFamily, Properties.Settings.Default.Font.Size - 1, Properties.Settings.Default.Font.Style, Properties.Settings.Default.Font.Unit, Properties.Settings.Default.Font.GdiCharSet, Properties.Settings.Default.Font.GdiVerticalFont);
             DocumentManager.ApplySettingsOnActiveDocument();
-            SettingsSerializer.Serialize();
+            Properties.Settings.Default.Save();
         }
         #endregion
 
         #region Sidebar
         private void infoBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings.IsInfoBarVisible = !Settings.IsInfoBarVisible;
-            infoBarToolStripMenuItem.Image = Settings.IsInfoBarVisible ? Properties.Resources.checkmark : null;
+            Properties.Settings.Default.IsInfoBarVisible = !Properties.Settings.Default.IsInfoBarVisible;
+            infoBarToolStripMenuItem.Image = Properties.Settings.Default.IsInfoBarVisible ? Properties.Resources.checkmark : null;
             DocumentManager.ApplySettingsOnActiveDocument();
-            SettingsSerializer.Serialize();
+            Properties.Settings.Default.Save();
         }
 
         private void wordWrapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings.IsWordWrapEnabled = !Settings.IsWordWrapEnabled;
-            wordWrapToolStripMenuItem.Image = Settings.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
+            Properties.Settings.Default.IsWordWrapEnabled = !Properties.Settings.Default.IsWordWrapEnabled;
+            wordWrapToolStripMenuItem.Image = Properties.Settings.Default.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
             DocumentManager.ApplySettingsOnActiveDocument();
-            SettingsSerializer.Serialize();
+            Properties.Settings.Default.Save();
         }
         public void ChangeLineAndCharacterNumber(int lineNumber, int charNumber)
         {
