@@ -97,5 +97,11 @@ namespace NoteSwag
         {
             comboBoxFont.Text = Properties.Settings.Default.Font.FontFamily.Name;
         }
+
+        private void checkBoxSyntaxHighlighting_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IsSyntaxHighlightingEnabled = checkBoxSyntaxHighlighting.Checked;
+            Properties.Settings.Default.Save();
+        }
     }
 }

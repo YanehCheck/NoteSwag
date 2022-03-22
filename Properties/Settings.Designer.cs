@@ -82,5 +82,17 @@ namespace NoteSwag.Properties {
                 this["IsBracketMatchingEnabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsSyntaxHighlightingEnabled {
+            get {
+                return ((bool)(this["IsSyntaxHighlightingEnabled"]));
+            }
+            set {
+                this["IsSyntaxHighlightingEnabled"] = value;
+            }
+        }
     }
 }

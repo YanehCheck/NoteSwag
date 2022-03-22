@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -9,6 +10,9 @@ namespace NoteSwag
         public string Directory { get; set; }
         public TabPage TabPage { get; set; }
         public RichTextBox TextBox { get; set; }
+
+        public Stack<string> UndoHistory = new Stack<string>();
+        public bool RunEvent = true;
         public Document() {
             string title = "New document";
             TabPage = new TabPage(title);
@@ -40,9 +44,15 @@ namespace NoteSwag
             TextBox.SelectionChanged += this.UpdateSideBarInfo;
             TextBox.MouseDown += this.OpenContextMenu;
             TextBox.KeyPress += this.BracketMatching;
+            TextBox.TextChanged += this.SyntaxHighlight;
+            TextBox.TextChanged += this.AddToUndoStack;
             TextBox.AcceptsTab = true;
             TextBox.ForeColor = Themes.DocumentTextColor;
             TextBox.BackColor = Themes.DocumentColor;
+        }
+
+        public void AddToUndoStack(object sender, EventArgs e) {
+            if(RunEvent) UndoHistory.Push(TextBox.Text);
         }
 
         public void UpdateSideBarInfo(object sender, EventArgs e) {
@@ -67,9 +77,11 @@ namespace NoteSwag
                     case '{':
                         bracket = '}';
                         break;
+                    /* ommited for programming purposes
                     case '<':
                         bracket = '>';
                         break;
+                    */
                     case '"':
                         bracket = '"';
                         break;
@@ -91,6 +103,15 @@ namespace NoteSwag
                 TextBox.SelectedText = e.KeyChar.ToString() + bracket;
                 TextBox.Select(TextBox.SelectionStart - 1, 0);
                 e.Handled = true;
+            }
+        }
+
+        public void SyntaxHighlight(object sender, EventArgs e) {
+            if (Properties.Settings.Default.IsSyntaxHighlightingEnabled) {
+                SyntaxHighlighter.HighlightSyntaxOfRichTextbox(TextBox);
+            }
+            else {
+                TextBox.ForeColor = Themes.DocumentTextColor;
             }
         }
     }

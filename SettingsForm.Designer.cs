@@ -39,6 +39,8 @@ namespace NoteSwag
             this.labelBracketMatchingText = new System.Windows.Forms.Label();
             this.comboBoxFont = new System.Windows.Forms.ComboBox();
             this.labelFontText = new System.Windows.Forms.Label();
+            this.labelSyntaxText = new System.Windows.Forms.Label();
+            this.checkBoxSyntaxHighlighting = new System.Windows.Forms.CheckBox();
             this.panelControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +53,7 @@ namespace NoteSwag
             this.panelControls.Controls.Add(this.buttonClose);
             this.panelControls.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControls.Location = new System.Drawing.Point(0, 0);
-            this.panelControls.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelControls.Margin = new System.Windows.Forms.Padding(2);
             this.panelControls.Name = "panelControls";
             this.panelControls.Size = new System.Drawing.Size(317, 30);
             this.panelControls.TabIndex = 1;
@@ -62,7 +64,7 @@ namespace NoteSwag
             this.pictureBox1.BackColor = System.Drawing.Color.Gray;
             this.pictureBox1.Image = global::NoteSwag.Properties.Resources.icon24;
             this.pictureBox1.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(18, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -127,8 +129,8 @@ namespace NoteSwag
             this.checkBoxBracketMatching.AutoSize = true;
             this.checkBoxBracketMatching.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.checkBoxBracketMatching.ForeColor = System.Drawing.Color.White;
-            this.checkBoxBracketMatching.Location = new System.Drawing.Point(132, 66);
-            this.checkBoxBracketMatching.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxBracketMatching.Location = new System.Drawing.Point(132, 95);
+            this.checkBoxBracketMatching.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxBracketMatching.Name = "checkBoxBracketMatching";
             this.checkBoxBracketMatching.Size = new System.Drawing.Size(18, 17);
             this.checkBoxBracketMatching.TabIndex = 8;
@@ -140,7 +142,7 @@ namespace NoteSwag
             this.labelBracketMatchingText.AutoSize = true;
             this.labelBracketMatchingText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBracketMatchingText.ForeColor = System.Drawing.Color.White;
-            this.labelBracketMatchingText.Location = new System.Drawing.Point(6, 63);
+            this.labelBracketMatchingText.Location = new System.Drawing.Point(6, 92);
             this.labelBracketMatchingText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBracketMatchingText.Name = "labelBracketMatchingText";
             this.labelBracketMatchingText.Size = new System.Drawing.Size(144, 18);
@@ -151,7 +153,7 @@ namespace NoteSwag
             // 
             this.comboBoxFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFont.FormattingEnabled = true;
-            this.comboBoxFont.Location = new System.Drawing.Point(59, 83);
+            this.comboBoxFont.Location = new System.Drawing.Point(59, 68);
             this.comboBoxFont.Name = "comboBoxFont";
             this.comboBoxFont.Size = new System.Drawing.Size(200, 21);
             this.comboBoxFont.TabIndex = 11;
@@ -162,19 +164,46 @@ namespace NoteSwag
             this.labelFontText.AutoSize = true;
             this.labelFontText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFontText.ForeColor = System.Drawing.Color.White;
-            this.labelFontText.Location = new System.Drawing.Point(6, 83);
+            this.labelFontText.Location = new System.Drawing.Point(6, 68);
             this.labelFontText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFontText.Name = "labelFontText";
             this.labelFontText.Size = new System.Drawing.Size(47, 18);
             this.labelFontText.TabIndex = 10;
             this.labelFontText.Text = "Font:";
             // 
+            // labelSyntaxText
+            // 
+            this.labelSyntaxText.AutoSize = true;
+            this.labelSyntaxText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSyntaxText.ForeColor = System.Drawing.Color.White;
+            this.labelSyntaxText.Location = new System.Drawing.Point(6, 114);
+            this.labelSyntaxText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSyntaxText.Name = "labelSyntaxText";
+            this.labelSyntaxText.Size = new System.Drawing.Size(197, 18);
+            this.labelSyntaxText.TabIndex = 13;
+            this.labelSyntaxText.Text = "Basic syntax highlighting:";
+            // 
+            // checkBoxSyntaxHighlighting
+            // 
+            this.checkBoxSyntaxHighlighting.AutoSize = true;
+            this.checkBoxSyntaxHighlighting.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.checkBoxSyntaxHighlighting.ForeColor = System.Drawing.Color.White;
+            this.checkBoxSyntaxHighlighting.Location = new System.Drawing.Point(180, 117);
+            this.checkBoxSyntaxHighlighting.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSyntaxHighlighting.Name = "checkBoxSyntaxHighlighting";
+            this.checkBoxSyntaxHighlighting.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxSyntaxHighlighting.TabIndex = 12;
+            this.checkBoxSyntaxHighlighting.UseVisualStyleBackColor = true;
+            this.checkBoxSyntaxHighlighting.CheckedChanged += new System.EventHandler(this.checkBoxSyntaxHighlighting_CheckedChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(317, 116);
+            this.ClientSize = new System.Drawing.Size(317, 139);
+            this.Controls.Add(this.labelSyntaxText);
+            this.Controls.Add(this.checkBoxSyntaxHighlighting);
             this.Controls.Add(this.comboBoxFont);
             this.Controls.Add(this.labelFontText);
             this.Controls.Add(this.labelBracketMatchingText);
@@ -207,5 +236,7 @@ namespace NoteSwag
         public System.Windows.Forms.CheckBox checkBoxBracketMatching;
         private System.Windows.Forms.ComboBox comboBoxFont;
         private System.Windows.Forms.Label labelFontText;
+        private System.Windows.Forms.Label labelSyntaxText;
+        public System.Windows.Forms.CheckBox checkBoxSyntaxHighlighting;
     }
 }

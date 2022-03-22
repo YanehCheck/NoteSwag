@@ -37,6 +37,7 @@ namespace NoteSwag
             infoBarToolStripMenuItem.Image = Properties.Settings.Default.IsInfoBarVisible ? Properties.Resources.checkmark : null;
             wordWrapToolStripMenuItem.Image = Properties.Settings.Default.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
             SettingsForm.instance.checkBoxBracketMatching.Checked = Properties.Settings.Default.IsBracketMatchingEnabled;
+            SettingsForm.instance.checkBoxSyntaxHighlighting.Checked = Properties.Settings.Default.IsSyntaxHighlightingEnabled;
             ApplyThemeToForm();
             AboutBox.instance.ApplyThemeToForm();
         }
@@ -275,15 +276,13 @@ namespace NoteSwag
         #endregion
 
         #region Text Controls
-
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DocumentManager.ActiveDocument.TextBox.Undo();
-        }
-
-        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DocumentManager.ActiveDocument.TextBox.Redo();
+            DocumentManager.ActiveDocument.RunEvent = false;
+            if(DocumentManager.ActiveDocument.UndoHistory.Count > 0) {
+                DocumentManager.ActiveDocument.TextBox.Text = DocumentManager.ActiveDocument.UndoHistory.Pop();
+            }
+            DocumentManager.ActiveDocument.RunEvent = true;
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)

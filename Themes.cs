@@ -25,6 +25,9 @@ namespace NoteSwag
         public static Color DocumentColor { get; set; }
         public static Color DocumentTextColor { get; set; }
         public static Color TextColor { get; set; }
+        public static Color SyntaxHighlightKeywords { get; set; }
+        public static Color SyntaxHighlightQuotes { get; set; }
+        public static Color SyntaxHighlightBlocks { get; set; }
         public static void SetThemeColors(Theme theme) {
             switch (theme) {
                 case Theme.Dark:
@@ -37,6 +40,9 @@ namespace NoteSwag
                     DocumentColor = Color.FromArgb(64, 64, 64);
                     DocumentTextColor = Color.FromName("White");
                     TextColor = Color.FromName("White");
+                    SyntaxHighlightKeywords = Color.FromArgb(100, 150, 255);
+                    SyntaxHighlightQuotes = Color.FromArgb(245, 200, 60);
+                    SyntaxHighlightBlocks = Color.FromName("Pink");
                     break;
                 case Theme.DarkPlus:
                     TopPanelColor = Color.FromName("Black");
@@ -48,6 +54,9 @@ namespace NoteSwag
                     DocumentColor = Color.FromArgb(32, 32, 32);
                     DocumentTextColor = Color.FromName("White");
                     TextColor = Color.FromName("White");
+                    SyntaxHighlightKeywords = Color.FromArgb(100, 150, 255);
+                    SyntaxHighlightQuotes = Color.FromArgb(245, 200, 60);
+                    SyntaxHighlightBlocks = Color.FromName("Pink");
                     break;
                 case Theme.Classic:
                     TopPanelColor = Color.FromName("Gray");
@@ -59,6 +68,9 @@ namespace NoteSwag
                     DocumentColor = Color.FromName("White");
                     DocumentTextColor = Color.FromName("Black");
                     TextColor = Color.FromName("Black");
+                    SyntaxHighlightKeywords = Color.FromArgb(100, 150, 255);
+                    SyntaxHighlightQuotes = Color.FromArgb(245, 200, 60);
+                    SyntaxHighlightBlocks = Color.FromArgb(200, 66, 120);
                     break;
                 case Theme.Midnight:
                     TopPanelColor = Color.FromArgb(0, 0, 20);
@@ -70,6 +82,9 @@ namespace NoteSwag
                     DocumentColor = Color.FromArgb(0, 0, 50);
                     DocumentTextColor = Color.FromName("White");
                     TextColor = Color.FromName("White");
+                    SyntaxHighlightKeywords = Color.FromArgb(50, 230, 255);
+                    SyntaxHighlightQuotes = Color.FromArgb(245, 200, 60);
+                    SyntaxHighlightBlocks = Color.FromName("Pink");
                     break;
                 case Theme.Classy:
                     TopPanelColor = Color.FromArgb(102, 0, 0);
@@ -81,6 +96,9 @@ namespace NoteSwag
                     DocumentColor = Color.FromArgb(179, 0, 0);
                     DocumentTextColor = Color.FromName("Black");
                     TextColor = Color.FromName("Black");
+                    SyntaxHighlightKeywords = Color.FromArgb(50, 230, 255);
+                    SyntaxHighlightQuotes = Color.FromArgb(245, 200, 60);
+                    SyntaxHighlightBlocks = Color.FromName("Pink");
                     break;
             }
         }
