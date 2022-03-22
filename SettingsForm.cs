@@ -14,10 +14,12 @@ namespace NoteSwag
     public partial class SettingsForm : Form
     {
         private FontConverter fontConvertor { get; set; } = new FontConverter();
+        public static SettingsForm instance { get; set; }
         public SettingsForm()
         {
             InitializeComponent();
             AddFontsToComboBox();
+            instance = this;
         }
 
         #region WinAPI calls for custom border
@@ -47,8 +49,8 @@ namespace NoteSwag
             Properties.Settings.Default.Theme = (int) Enum.Parse(typeof(Themes.Theme), comboBoxTheme.Text);
             Themes.SetThemeColors((Themes.Theme) Properties.Settings.Default.Theme);
             MainForm.instance.ApplyThemeToForm();
-            MainForm.AboutBox.ApplyThemeToForm();
-            MainForm.SettingsForm.ApplyThemeToForm();
+            AboutBox.instance.ApplyThemeToForm();
+            SettingsForm.instance.ApplyThemeToForm();
             Properties.Settings.Default.Save();
         }
 

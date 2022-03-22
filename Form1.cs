@@ -18,27 +18,27 @@ namespace NoteSwag
         public static MainForm instance { get; set; }
 
         public static SearchAndReplaceForm SearchAndReplaceForm { get; } = new SearchAndReplaceForm();
-        public static AboutBox AboutBox { get; } = new AboutBox();
-        public static SettingsForm SettingsForm { get; } = new SettingsForm();
         public MainForm()
         {
             instance = this;
             InitializeComponent();
             DocumentManager = DocumentManager.instance;
-            SetupSettings();
+            SetupSettingsAndDependencies();
             CheckForCommandLineArgumentFiles();
             DocumentManager.ApplySettingsOnActiveDocument();
             //SetAssociation_User("txt", Application.ExecutablePath, Path.GetFileName(Application.ExecutablePath));
         }
 
-        private void SetupSettings()
+        private void SetupSettingsAndDependencies()
         {
+            new AboutBox();
+            new SettingsForm();
             Themes.SetThemeColors((Themes.Theme)Properties.Settings.Default.Theme);
             infoBarToolStripMenuItem.Image = Properties.Settings.Default.IsInfoBarVisible ? Properties.Resources.checkmark : null;
             wordWrapToolStripMenuItem.Image = Properties.Settings.Default.IsWordWrapEnabled ? Properties.Resources.checkmark : null;
-            SettingsForm.checkBoxBracketMatching.Checked = Properties.Settings.Default.IsBracketMatchingEnabled;
+            SettingsForm.instance.checkBoxBracketMatching.Checked = Properties.Settings.Default.IsBracketMatchingEnabled;
             ApplyThemeToForm();
-            AboutBox.ApplyThemeToForm();
+            AboutBox.instance.ApplyThemeToForm();
         }
 
         #region WinAPI calls for custom border
@@ -359,14 +359,14 @@ namespace NoteSwag
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox.TopMost = true;
-            AboutBox.Show();
+            AboutBox.instance.TopMost = true;
+            AboutBox.instance.Show();
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SettingsForm.TopMost = true;
-            SettingsForm.Show();
+            SettingsForm.instance.TopMost = true;
+            SettingsForm.instance.Show();
         }
 
         public void ApplyThemeToForm()

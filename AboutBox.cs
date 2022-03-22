@@ -13,9 +13,11 @@ namespace NoteSwag
 {
     public partial class AboutBox : Form
     {
+        public static AboutBox instance { get; set; }
         public AboutBox()
         {
             InitializeComponent();
+            instance = this;
             labelVersion.Text = "V" + AssemblyVersion;
             labelProductName.Text = AssemblyProduct;
             labelProductDescription.Text = AssemblyDescription;
